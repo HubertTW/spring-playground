@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX with Spring Boot</title>
+</head>
+<body>
+<h1>AJAX with Spring Boot</h1>
+<input type="text" id="nameInput" placeholder="Enter your name">
+<button onclick="sendRequest()">Send Request</button>
+<p id="response"></p>
+
+<script>
+    function sendRequest() {
+        const name = document.getElementById("nameInput").value;
+        fetch(`http://localhost:8080/hello?name=${name}`)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("response").innerText = data;
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>
+</body>
+</html>
